@@ -3,6 +3,7 @@ import './App.css';
 // import * as Befeni from "./library/befeni-library/befeni-fabric-api-wrapper.esm.js"
 import { useQuery } from '@tanstack/react-query';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import ChevornIcon from './assets/ChevornIcon.js';
 import FabricCarousel from './components/Carousel.js';
 import DesignInspiration from './components/DesignInspiration.js';
 import FabricTable from './components/FabricTable.js';
@@ -65,20 +66,17 @@ function App() {
     }
   })
 
-  console.log(data);
-
-
   return (
     <div className='container mx-auto scroll-smooth'>
       {isLoading ? <p className='p-10 italic'>Loading</p> : (
         <div className=''>
           {/* Header */}
           <div className="flex w-full">
-            <div className="order-1 flex w-full sm:w-1/2 justify-between sm:justify-start sm:gap-4">
-              <div className="sm:order-2">
+            <div className="order-1 flex w-full sm:w-1/2 justify-between sm:justify-start sm:gap-4 md:justify-between">
+              <div className="sm:order-2 md:order-1">
                 <h1 className='text-2xl'>{data?.name}</h1>
               </div>
-              <div className="sm:order-1">
+              <div className="sm:order-1 md:order-2">
                 <h1 className='text-2xl'>{params?.fabricCode}</h1>
               </div>
             </div>
@@ -106,6 +104,9 @@ function App() {
           {/* Design Inspiration */}
           <div className="mt-20 sm:mt-10" ref={designInspiration}>
             <DesignInspiration />
+            <div className="w-full flex justify-center sm:hidden">
+              <ChevornIcon />
+            </div>
           </div>
           {/* View PopOver */}
           <div className="sm:hidden fixed bottom-4 w-[80vw] border-2 border-secondary bg-secondary/40 rounded-2xl p-2 " onClick={() => designInspiration.current?.scrollIntoView()}>
